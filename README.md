@@ -63,6 +63,10 @@ setCtx({
 `dora publish`
 把当前目录publish到父仓库中去，请确定你拥有父仓库与子仓库的push权限
 
+## demo
+https://github.com/hellof2e/doraAppExample 父应用demo
+https://github.com/hellof2e/doraSubappExample 子应用demo
+
 
 ## 指令
 ```
