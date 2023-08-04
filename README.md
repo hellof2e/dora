@@ -151,5 +151,5 @@ webpackChain(chain) {
 
 这里配置就完成了
 具体可以参考这2个仓库
-https://github.com/hellof2e/doraAppExample 父应用demo  <br>
-https://github.com/hellof2e/doraSubappExample 子应用demo
+父应用demo(https://github.com/hellof2e/doraAppExample)   <br/>
+子应用demo(https://github.com/hellof2e/doraSubappExample)
