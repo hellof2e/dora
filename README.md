@@ -1,5 +1,7 @@
 
-<image src='./docs/圆角-tmpq_5tz_14.png' />
+<image src='./docs/圆角-tmpq_5tz_14.png' width='200px' />
+<h1 align="center">dora</h1>
+
 # taro小程序微前端集成框架
 dora是一个哈啰出行的开源的taro小程序微前端集成框架，具有把多页业务拆分并集成编译的与通讯的能力，解耦了业务与业务，降低了总体的复杂度与多业务线合作难度
 
