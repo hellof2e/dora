@@ -76,6 +76,12 @@ https://github.com/hellof2e/DoraAppExample 父应用demo
 https://github.com/hellof2e/DoraSubappExample 子应用demo
 
 
+
+# 如何使用
+## 安装
+$ npm i -g  @hellobikefe/dora
+
+
 ## 指令
 ```
 命令
@@ -87,3 +93,63 @@ Commands:
   update [options]  更新子应用
   help [command]    display help for command
 ```
+
+## 接入
+### config.json & config.ts/js
+配置config.json在父应用与子应用中，子应用包含路由和event，父config记录子应用tag path等。在项目初始化的时候可以手动clone子仓库到想要的目录，随后在子应用根目录执行dora publish
+```
+//父亲仓库config.json
+{
+  "apps": {
+    "doraSubappExample": {
+      "configPath": "./src/doraSubappExample/config.ts",
+      "path": "./src",
+      "repository": "git@github.com:gjc9620/dora-subapp-example.git",
+      "subAppName": "doraSubappExample", 
+      "tag": "1.0.0-release/1.0.0-1689675708545"
+    }
+  }
+}
+```
+子仓库可以参考 此[配置](https://github.com/hellof2e/doraAppExample/blob/23df5ef592b8c9dab8fa19d15f76ed516fd263fb/src/app.config.ts#L38)
+
+## package.json
+在接入的子仓库的package.json中编写subappname属性
+```
+{
+  "version": "1.0.0",
+  "subAppName": "doraSubappExample"
+}
+```
+
+## babel
+增加babel插件 执行npm i babel-plugin-macros@3.1.0，随后在config/index中添加如下代码
+```
+const macros = (chain) => chain.merge({
+  module : {
+    rule : {
+      myloader : {
+        test : /(node_modules|src).*\.(ts|tsx|js|jsx)$/,
+        use : [{
+          loader : 'babel-loader',
+          options : {
+            plugins : [
+              'macros',
+            ],
+          },
+        }],
+      },
+    },
+  },
+});
+
+//增加
+webpackChain(chain) {
+  macros(chain)
+},
+```
+
+这里配置就完成了
+具体可以参考这2个仓库
+https://github.com/hellof2e/doraAppExample 父应用demo  <br>
+https://github.com/hellof2e/doraSubappExample 子应用demo
